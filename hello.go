@@ -11,25 +11,15 @@ import (
 )
 
 func main() {
-	b, err := ioutil.ReadFile("email.txt") // just pass the file name
+    b, err := ioutil.ReadFile("email.txt") // just pass the file name
     if err != nil {
         fmt.Print(err)
     }
 
     // fmt.Println(b) // print the content as 'bytes'
-
     str := string(b) // convert content to a 'string'
 
     // fmt.Println(str) // print the content as a 'string'
-/*
-	msg := `Date: Mon, 23 Jun 2015 11:40:36 -0400
-From: Gopher <from@example.com>
-To: Another Gopher <to@example.com>
-Subject: Gophers at Gophercon
-
-Message body
-`
-*/
 	r := strings.NewReader(str)
 	m, err := mail.ReadMessage(r)
 	if err != nil {
